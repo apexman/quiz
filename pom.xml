@@ -14,7 +14,7 @@
 	<name>quiz</name>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>9</java.version>
 		<spring-boot-starter-web-version>2.3.2.RELEASE</spring-boot-starter-web-version>
 		<spring-data-jpa-version>2.3.2.RELEASE</spring-data-jpa-version>
 		<postgres-version>42.2.14</postgres-version>

@@ -15,7 +15,7 @@ import ru.maksimov.quiz.repository.QuestionRepository;
 import java.util.*;
 
 @Controller
-@RequestMapping
+@RequestMapping(path = "/question")
 public class QuestionController {
 
 	@Autowired
@@ -23,8 +23,8 @@ public class QuestionController {
 	@Autowired
 	private AnswerRepository answerRepository;
 
-	@GetMapping
-	public ResponseEntity<QuestionView> get(@PathVariable("{id}") Long id) {
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<QuestionView> get(@PathVariable("id") Long id) {
 		Optional<Question> optionalQuestion = questionRepository.findById(id);
 		if (optionalQuestion.isEmpty()) {
 			return ResponseEntity.notFound().build();
