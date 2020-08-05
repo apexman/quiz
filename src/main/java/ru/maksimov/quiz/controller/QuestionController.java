@@ -56,7 +56,7 @@ public class QuestionController {
 	}
 
 	@PostMapping
-	public ResponseEntity<CreateQuestion> create(@RequestBody CreateQuestion createQuestion) {
+	public ResponseEntity create(@RequestBody CreateQuestion createQuestion) {
 		if (createQuestion == null
 				|| createQuestion.getQuestionText() == null
 				|| createQuestion.getQuestionText().isEmpty()) {
@@ -66,12 +66,11 @@ public class QuestionController {
 		Question question = new Question();
 		question.setQuestionText(createQuestion.getQuestionText());
 		questionRepository.save(question);
-		CreateQuestion createQuestionResult = new CreateQuestion(question);
-		return ResponseEntity.ok(createQuestionResult);
+		return ResponseEntity.ok().build();
 	}
 
 	@PutMapping
-	public ResponseEntity<UpdateQuestion> update(@RequestBody UpdateQuestion updateQuestion) {
+	public ResponseEntity update(@RequestBody UpdateQuestion updateQuestion) {
 		if (updateQuestion == null
 				|| updateQuestion.getId() == null
 				|| updateQuestion.getQuestionText() == null
@@ -87,9 +86,7 @@ public class QuestionController {
 		Question question = optionalQuestion.get();
 		question.setQuestionText(updateQuestion.getQuestionText());
 		questionRepository.save(question);
-
-		UpdateQuestion updateQuestion1 = new UpdateQuestion(question);
-		return ResponseEntity.ok(updateQuestion1);
+		return ResponseEntity.ok().build();
 	}
 
 }

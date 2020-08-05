@@ -51,7 +51,7 @@ public class AnswerController {
 	}
 
 	@PostMapping
-	public ResponseEntity<CreateAnswer> create(@RequestBody CreateAnswer createAnswer) {
+	public ResponseEntity create(@RequestBody CreateAnswer createAnswer) {
 		if (createAnswer == null
 				|| createAnswer.getAnswerText() == null
 				|| createAnswer.getAnswerText().isEmpty()
@@ -72,11 +72,11 @@ public class AnswerController {
 		Answer savedAnswer = answerRepository.save(answer);
 		CreateAnswer result = new CreateAnswer(savedAnswer);
 
-		return ResponseEntity.ok(result);
+		return ResponseEntity.ok().build();
 	}
 
 	@PutMapping
-	public ResponseEntity<UpdateAnswer> update(@RequestBody UpdateAnswer updateAnswer) {
+	public ResponseEntity update(@RequestBody UpdateAnswer updateAnswer) {
 		if (updateAnswer == null
 				|| updateAnswer.getId() == null
 				|| updateAnswer.getAnswerText() == null
@@ -101,7 +101,7 @@ public class AnswerController {
 		answer.setQuestionId(question.getId());
 		Answer savedAnswer = answerRepository.save(answer);
 
-		return ResponseEntity.ok(new UpdateAnswer(savedAnswer));
+		return ResponseEntity.ok().build();
 	}
 
 }

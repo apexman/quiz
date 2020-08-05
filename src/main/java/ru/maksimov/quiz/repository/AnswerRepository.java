@@ -15,6 +15,6 @@ public interface AnswerRepository extends CrudRepository<Answer, Long> {
 	@Query("SELECT a FROM Answer as a WHERE a.questionId = :questionId")
 	Optional<List<Answer>> findAllByQuestionId(@Param("questionId") Long questionId);
 
-	@Query("SELECT a FROM Answer as a WHERE a.questionId not null and in :questionIds")
+	@Query("SELECT a FROM Answer as a WHERE a.questionId is not null and a.questionId in :questionIds")
 	Optional<List<Answer>> findAllByQuestionIds(@Param("questionIds") List<Long> questionIds);
 }
